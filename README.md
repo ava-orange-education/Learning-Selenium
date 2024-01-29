@@ -1,2 +1,1 @@
-# Learning-Selenium
-Learning Selenium, published by Orange, AVA™
+Code and chapter content for Book 70
