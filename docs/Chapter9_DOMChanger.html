@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Element Addition Example</title>
+    <style>
+        .new-element {
+            margin: 10px;
+            padding: 10px;
+            background-color: lightgray;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Elements will be added below:</h2>
+    </div>
+
+    <script>
+        function addNewElement() {
+            var container = document.getElementById("container");
+            var newElement = document.createElement("div");
+            newElement.classList.add("new-element");
+            newElement.textContent = "Added at " + new Date().toLocaleTimeString();
+            container.appendChild(newElement);
+        }
+
+        setInterval(addNewElement, 10000); // 10000 milliseconds = 10 seconds
+    </script>
+</body>
+</html>

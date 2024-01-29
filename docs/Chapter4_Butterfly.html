@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+   <title>Automation for flying butterflies</title>
+  
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+body {
+	font-family: 'Raleway', sans-serif;
+}
+
+#container {
+ position:absolute;
+ top:0;
+ left:0;
+	-webkit-transform-style: preserve-3d;
+	/*-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;*/
+}
+
+.ko {
+	font-family: 'Nanum Brush Script', cursive;
+	font-size:40px;
+}
+
+.nabpi {
+	position:absolute;
+	top:50%;
+	left:50%;
+
+	-webkit-transform-style: preserve-3d;
+	-webkit-transform-origin: 50% 50%;
+
+	-moz-transform-style: preserve-3d;
+	-moz-transform-origin: 50% 50%;
+
+	transform-style: preserve-3d;
+	transform-origin: 50% 50%;
+}
+
+.wing {
+	margin:0;
+	-webkit-animation: wing-animation 0.5s linear infinite;
+	   -moz-animation: wing-animation 0.5s linear infinite;
+			animation: wing-animation 0.5s linear infinite;
+}
+
+.left.wing {
+	-webkit-transform-origin:right center;
+	   -moz-transform-origin:right center;
+			transform-origin:right center;
+}
+.right.wing {
+	-webkit-transform-origin:left center;
+	   -moz-transform-origin:left center;
+			transform-origin:left center;
+}
+
+.n1 {
+	width:233px;
+	height:130px;
+	margin-left:-116px;
+	margin-top:-65px;
+}
+.n1 .body {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi01.png") no-repeat -237px top;
+	width:49px;
+	height:130px;
+	margin-left:90px;
+	-webkit-transform: translateZ(70px);
+}
+.n1 .left.wing {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi01.png") no-repeat left top;
+	width:110px;
+	height:130px;
+}
+.n1 .right.wing {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi01.png") no-repeat -127px top;
+	width:110px;
+	height:130px;
+	margin-left:123px;
+}
+
+.n2 {
+	width:269px;
+	height:154px;
+	margin-left:-135px;
+	margin-top:-77px;
+}
+.n2 .body {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi02.png") no-repeat -269px top;
+	width:55px;
+	height:154px;
+	margin-left:101px;
+	-webkit-transform: translateZ(70px);
+}
+.n2 .left.wing {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi02.png") no-repeat left top;
+	width:132px;
+	height:154px;
+}
+.n2 .right.wing {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi02.png") no-repeat -137px top;
+	width:132px;
+	height:154px;
+	margin-left:138px;
+}
+
+.n3 {
+	width:269px;
+	height:154px;
+	margin-left:-135px;
+	margin-top:-77px;
+}
+.n3 .body {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi03.png") no-repeat -269px top;
+	width:55px;
+	height:154px;
+	margin-left:101px;
+	-webkit-transform: translateZ(70px);
+}
+.n3 .left.wing {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi03.png") no-repeat left top;
+	width:132px;
+	height:154px;
+}
+.n3 .right.wing {
+	position:absolute;
+	background: url("https://klevron.github.io/codepen/nabpi/nabpi03.png") no-repeat -137px top;
+	width:132px;
+	height:154px;
+	margin-left:138px;
+}
+
+@-webkit-keyframes nabpi-animation {
+	from {
+	-webkit-transform:translateZ(0);
+	}
+	50% {
+		-webkit-transform:translateZ(100);
+	}
+	to {
+		-webkit-transform:translateZ(0);
+	}
+}
+
+@-webkit-keyframes wing-animation {
+	from {
+		-webkit-transform:rotateY(0deg);
+	}
+	70% {
+		-webkit-transform:rotateY(80deg);
+	}
+	to {
+		-webkit-transform:rotateY(0deg);
+	}
+}
+
+@-moz-keyframes wing-animation {
+	from {
+		-moz-transform:rotateY(0deg);
+	}
+	70% {
+		-moz-transform:rotateY(80deg);
+	}
+	to {
+		-moz-transform:rotateY(0deg);
+	}
+}
+
+@keyframes wing-animation {
+	from {
+		transform:rotateY(0deg);
+	}
+	70% {
+		transform:rotateY(80deg);
+	}
+	to {
+		transform:rotateY(0deg);
+	}
+}
+</style>
+
+  
+  
+  
+</head>
+
+<body translate="no">
+  <h1><span class="ko">Automation for moving elements</span> 🦋 </h1>
+<p>Write Selenium code to count the number of white butterflies<br/>Move your mouse ^^</p>
+
+<div id="container"></div>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script id="rendered-js" >
+(function ($) {
+
+  var $body = $('body');
+  var items = [];
+  var ox = $(document).width() / 2,oy = $(document).height() / 2;
+
+  // vendor prefix ?
+  var prefix = getVendorPrefix();
+  function getVendorPrefix()
+  {
+    var el = document.createElement('div'),
+    prefix = '';
+
+    if ('WebkitTransition' in el.style) prefix = '-webkit-';else
+    if ('MozTransition' in el.style) prefix = '-moz-';
+    return prefix;
+  }
+
+  function Nabi(type) {
+    this.$elt = $('<div class="nabpi n' + type + '"><div class="left wing"></div><div class="body"></div><div class="right wing"></div></div');
+    this.elt = this.$elt[0];
+    this.$wings = this.$elt.find('.wing');
+
+    this.scale = Math.random() * 0.5 + 0.1;
+    this.$wings.css('animation-duration', this.scale * 2 + 's');
+
+    this.x = Math.random() * $(document).width(); //p.left;
+    this.y = Math.random() * $(document).height(); //p.top;
+    this.vx = Math.random() * 10 - 5;
+    this.vy = Math.random() * 10 - 5;
+    this.l = this.scale * 20;
+    this.z = Math.round(-1 / this.scale * 2500);
+    this.move();
+  }
+  Nabi.prototype.move = function () {
+    // calcul angle
+    var r = Math.sqrt(this.vx * this.vx + this.vy * this.vy),
+    cos = this.vx / r,
+    angle = Math.acos(cos) * 180 / Math.PI + 90,
+    transform = 'perspective(4000px) translateZ(' + this.z + 'px) '; //'scale('+this.scale+') ';
+
+    if (this.vy < 0)
+    angle = 180 - angle;
+    transform += 'rotateZ(' + Math.round(angle) + 'deg)';
+
+    this.x += this.vx;
+    this.y += this.vy;
+
+    var cssText = '';
+    cssText += prefix + 'transform:' + transform + ';';
+    cssText += 'left:' + Math.round(this.x) + 'px;';
+    cssText += 'top:' + Math.round(this.y) + 'px;';
+    this.elt.style.cssText = cssText;
+    return this;
+  };
+  Nabi.prototype.setDestination = function (ox, oy) {
+    var dx = ox - this.x,
+    dy = oy - this.y,
+    d = Math.sqrt(dx * dx + dy * dy);
+
+    this.vx = this.vx + 0.4 * dx / d;
+    this.vy = this.vy + 0.4 * dy / d;
+    this.limit().move();
+    return this;
+  };
+
+  Nabi.prototype.limit = function () {
+    var l = this.l;
+    if (this.vx > l) this.vx = l;else
+    if (this.vx < -l) this.vx = -l;
+    if (this.vy > l) this.vy = l;else
+    if (this.vy < -l) this.vy = -l;
+    return this;
+  };
+
+  function update() {
+    for (var i = 0; i < items.length; i++) {
+      items[i].setDestination(ox, oy);
+    }
+  }
+
+  $(document).ready(function () {
+
+    var $container = $('#container');
+
+    for (var i = 0; i < 25; i++)
+    {
+      var nabi = new Nabi(i % 3 + 1);
+      $container.append(nabi.$elt);
+      items.push(nabi);
+    }
+
+    $(document).on('mousemove', function (e) {
+      ox = e.clientX;
+      oy = e.clientY;
+    });
+
+    $(document).on('click', function (e) {
+      for (var i = 0; i < items.length; i++) {
+        items[i].vx = 40 - Math.random() * 80;
+        items[i].vy = 40 - Math.random() * 80;
+      }
+    });
+
+    setInterval(function () {
+      update();
+    }, 1000 / 25);
+
+  });
+
+})(jQuery);
+//# sourceURL=pen.js
+    </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+  
+  <script src="butterflyscript.js"></script>
+</body>
+
+</html>

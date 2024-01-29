@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.circle { /* Define the circle class */
+	height: 100px;
+	width: 100px;
+	background-color: yellow;
+	border-radius: 50%; /* Use border-radius to make it a circle */
+	border: 2px solid black;
+	margin: 5px;
+}
+</style>
+</head>
+<body>
+	<div id="header">
+		<h1>Wait strategy samples</h1>
+		<h2>Try automating the validation of below cirlce or input box 😇</h2>
+		<h3>Note: Reload to reset the state of the page</h3>
+
+
+	</div>
+
+	<script>
+  var next = 0;
+
+  function addMore() {
+    var circle = document.createElement('div');
+    circle.id = 'circle' + next++;
+    circle.className = 'circle'; // Use the updated class name
+    circle.style.margin = '5px';
+
+    window.setTimeout(function () {
+      document.body.appendChild(circle);
+    }, Math.random() * 10000);
+  }
+
+  function reveal() {
+    var elem = document.getElementById('inputbox');
+    window.setTimeout(function () {
+      elem.style.display = 'block';
+    }, 1000);
+  }
+</script>
+	<input id="explicitbutton" type="button"
+		value="Wait randomly to get a yellow circle" onclick="addMore()" />
+	<input id="implicitbutton" type="button"
+		value="Wait 1 second to get an input box" onclick="reveal();" />
+	<input id="inputbox" style="display: none;">
+</body>
+</html>

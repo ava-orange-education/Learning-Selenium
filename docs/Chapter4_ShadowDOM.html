@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Shadow DOM</title>
+  </head>
+  <body>
+    <h1>Shadow DOM example page</h1>
+    <h2>Try entering text into the input text box below 🫡</h2>
+    <h3>And if you are courageous try getting the text from nested Shadow root</h3>
+    <div id="non_host"></div>
+    <div id="shadow_host"></div>
+    <script>
+      let shadowRoot = document.getElementById('shadow_host')
+      .attachShadow({mode: 'open'});
+      shadowRoot.innerHTML = `
+              <span class="wrapper" id="shadow_content">
+                <span class="info">Text inside Shadow DOM</span></span>
+              <div id="nested_shadow_host"></div>
+              <input type="text" id="shadowinput" class="shadowinput"/>
+            `;
+
+      let nestedShadowRoot = shadowRoot.getElementById('nested_shadow_host')
+      .attachShadow({mode: 'open'});
+      nestedShadowRoot.innerHTML = `
+              <div id="nested_shadow_content"><div>text value inside nested shadow root</div></div>
+            `;
+    </script>
+  </body>
+</html>
