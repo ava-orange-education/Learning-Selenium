@@ -24,7 +24,7 @@ public class Chapter04_AnimationAutomation {
 		WebDriver driver = new ChromeDriver();
 
 		// Navigating to sample page
-		driver.get("https://ava-orange-education.github.io/Learning-Selenium/docs/Chapter4_Butterfly.html");
+		driver.get("https://ava-orange-education.github.io/Ultimate-Selenium-WebDriver-for-Test-Automation/docs/Chapter4_Butterfly.html");
 		// Dynamic wait for butterfly animation to appear
 		Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"nabpi n1\"]")));

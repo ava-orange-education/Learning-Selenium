@@ -13,7 +13,7 @@ public class Chapter09_ConsoleLogTest {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://ava-orange-education.github.io/Learning-Selenium/docs/Chapter9_ConsoleLogs.html");
+		driver.get("https://ava-orange-education.github.io/Ultimate-Selenium-WebDriver-for-Test-Automation/docs/Chapter9_ConsoleLogs.html");
 		driver.findElement(By.id("consoleLog")).click();
 		driver.findElement(By.id("consoleError")).click();
 
