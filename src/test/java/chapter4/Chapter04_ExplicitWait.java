@@ -24,7 +24,7 @@ public class Chapter04_ExplicitWait {
 		WebDriver driver = new ChromeDriver();
 
 		// Navigating to sample page
-		driver.get("https://smilinrobin.github.io/LearningSelenium/docs/Chapter3_Waits.html");
+		driver.get("https://ava-orange-education.github.io/Learning-Selenium/docs/Chapter3_Waits.html");
 		WebElement yellowcirclebutton = driver.findElement(By.id("explicitbutton"));
 		yellowcirclebutton.click();
 		// Setting up Explicit wait

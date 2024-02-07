@@ -21,7 +21,7 @@ public class Chapter04_ImplicitWaits {
 		WebDriver driver = new ChromeDriver();
 
 		// Navigating to sample page
-		driver.get("https://smilinrobin.github.io/LearningSelenium/docs/Chapter3_Waits.html");
+		driver.get("https://ava-orange-education.github.io/Learning-Selenium/docs/Chapter3_Waits.html");
 		// Setting up Implicit wait
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		WebElement inputboxbutton = driver.findElement(By.id("implicitbutton"));

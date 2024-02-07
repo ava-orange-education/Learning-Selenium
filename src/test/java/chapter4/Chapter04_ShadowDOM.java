@@ -20,7 +20,7 @@ public class Chapter04_ShadowDOM {
 		WebDriver driver = new ChromeDriver();
 
 		// Navigating to sample page
-		driver.get("https://smilinrobin.github.io/LearningSelenium/docs/Chapter4_ShadowDOM.html");
+		driver.get("https://ava-orange-education.github.io/Learning-Selenium/docs/Chapter4_ShadowDOM.html");
 //		// Erroneous navigation
 //		WebElement inputfield = driver.findElement(By.id("shadowinput"));
 //		inputfield.sendKeys("Test input value");
